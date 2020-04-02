@@ -1,5 +1,7 @@
 package modelo.entities;
 
+import modelo.exceptions.DomainException;
+
 public class Account {
 
 	private Integer number;
@@ -49,11 +51,11 @@ public class Account {
 	public void withdraw(double amount) throws IllegalArgumentException {
 		
 		if(amount > withdrawLimit) {
-			throw new IllegalArgumentException("Withdraw error: The amount exceeds withdraw limit.");
+			throw new DomainException("Withdraw error: The amount exceeds withdraw limit.");
 		}
 		
 		if(amount > balance) {
-			throw new IllegalArgumentException("Withdraw error: Not enough balance.");
+			throw new DomainException("Withdraw error: Not enough balance.");
 		}
 		
 		balance -= amount;

@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import modelo.entities.Account;
+import modelo.exceptions.DomainException;
 
 public class Program {
 
@@ -27,14 +28,14 @@ public class Program {
 			
 			Account acc = new Account(number, holder, balance, withdrawLimit);
 			System.out.println();
-
+	
 			System.out.print("Enter amount for withdraw: ");
 			double amount = sc.nextDouble();
 			acc.withdraw(amount);
 			
 			System.out.println(acc);
 		}
-		catch (IllegalArgumentException e) {
+		catch (DomainException e) {
 			System.out.println(e.getMessage());
 		}
 		catch (RuntimeException e) {
